@@ -1,8 +1,8 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-data = pd.read_csv("Credit Risk Benchmark Dataset.csv")
-data = data[["age", "debt_ratio"]]
+data = pd.read_csv("test_data.csv")
+data = data[["Hours", "Scores"]]
 
 def mean_squared_error(m, b, points):
     total_error = 0
@@ -35,11 +35,18 @@ def gradient_descent(m, b, points, l):
 m = 0 
 b = 0
 l = 0.0001
-epochs = 100
+epochs = 1000
 
 for i in range(epochs):
     m, b  = gradient_descent(m, b, data, l)
     print(m, b)
+    print(mean_squared_error(m, b, data))
 
-plt.scatter(data.age, data.debt_ratio, color="black")
+plt.scatter(data.Hours, data.Scores, color="black")
+
+x_vals = data.Hours
+y_vals = m * x_vals + b
+plt.plot(x_vals, y_vals, color="red", label="Regression Line")
+
+plt.legend()
 plt.show()
