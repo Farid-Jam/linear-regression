@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-data = pd.read_csv("test_data.csv")
+data = pd.read_csv("data/univariate_data.csv")
 data = data[["Hours", "Scores"]]
 
 def mean_squared_error(m, b, points):
